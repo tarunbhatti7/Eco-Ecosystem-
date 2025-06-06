@@ -1,0 +1,70 @@
+.wrapper {
+  position: fixed;
+  width: auto;
+  max-width: 80%;
+  height: 75px;
+  bottom: 20px;
+  background: rgba(245, 245, 245, 0.15);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(81.5px);
+  border-radius: 20px;
+  transition: 0.5s ease-in-out;
+
+}
+.inner_wrapper {
+  display: flex;
+  padding: 1rem;
+  margin-left: 0.5rem;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  width: max-content;
+  /* background-color: hsl(0, 0%, 100%); */
+  flood-opacity: 1;
+    
+}
+.ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+}
+
+.ul > li > img {
+  width: 60px;
+  height: 60px;
+  cursor:context-menu;
+  transition: 0.15s ease;
+}
+
+.ul > li > img:hover {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 40%;
+}
+
+.round{
+  border-radius: 0.375rem; 
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+    width: 70px;
+    height: 70px;
+  }
+  50% {
+    transform: translateY(-40px);
+    width: 70px;
+    height: 70px;
+  }
+  100% {
+    transform: translateY(0px);
+    width: 70px;
+    height: 70px;
+  }
+}
+.bounceAnimation {
+  animation: bounce 0.7s alternate;
+} 

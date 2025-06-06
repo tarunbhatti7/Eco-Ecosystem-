@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>home page</h1>
+    <div id='text'>
+
+    </div>
+    <textarea name="" id="">
+
+    </textarea>
+</body>
+<script>
+
+    let ws = new WebSocket('ws://127.0.0.1:8000/ws/use/connect/');
+    let l = document.getElementById('text');
+
+    ws.onopen = function(e) {
+        console.log('WebSocket connected!');
+        l.innerText = 'connected';
+    }
+
+    ws.onmessage = function(e) {
+        const k = JSON.parse(e.data);
+        console.log(k['message']);
+    };
+
+    ws.onclose = function(e) {
+        console.log('WebSocket disconnected!');
+        l.innerText = 'disconnected';
+    }
+
+    function sendClipboardUpdate() {
+        console.log("something is copied")
+        navigator.clipboard.readText().then(text => {
+            ws.send(JSON.stringify({
+                'message': text
+            }));
+        });
+    }
+
+    document.addEventListener('copy', sendClipboardUpdate);
+    
+    
+
+
+</script>
+</html>
